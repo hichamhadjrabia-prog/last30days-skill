@@ -11,7 +11,7 @@ COMMON_TARGETS=(
   # but local development needs the cache kept in sync with the repo.
   # Do NOT add ~/.claude/skills/last30days - it creates a duplicate
   # /last30days-3 in the slash command menu alongside the plugin version.
-  "$HOME/.claude/plugins/cache/last30days-skill-private/last30days-3/3.0.0"
+  "$HOME/.claude/plugins/cache/last30days-skill-private/last30days-3/3.0.1"
   "$HOME/.claude/plugins/cache/last30days-skill-private/last30days-3-nogem/3.0.0-nogem"
   "$HOME/.agents/skills/last30days"
   "$HOME/.codex/skills/last30days"
@@ -76,12 +76,7 @@ if [ -d "$HOME/.hermes/skills/research" ]; then
   echo "--- Syncing to Hermes ---"
   mkdir -p "$HERMES_TARGET/scripts/lib"
   
-  # Use Hermes-specific SKILL.md if available, fallback to main
-  if [ -f "$SRC/.hermes-plugin/SKILL.md" ]; then
-    cp "$SRC/.hermes-plugin/SKILL.md" "$HERMES_TARGET/SKILL.md"
-  else
-    cp "$SRC/SKILL.md" "$HERMES_TARGET/SKILL.md"
-  fi
+  cp "$SRC/SKILL.md" "$HERMES_TARGET/SKILL.md"
   
   rsync -a \
     "$SRC/scripts/last30days.py" \
